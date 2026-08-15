@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff login — BoomTown Admin</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<section class="center-page">
+  <div style="width:100%; max-width:380px;">
+    <a href="../index.html" class="brand" style="justify-content:center; margin-bottom:30px;">
+      <span class="mark">BT</span>
+      <span>BOOMTOWN<small>ADMIN</small></span>
+    </a>
+
+    <div class="info-panel">
+      <div class="eyebrow">Staff access</div>
+      <h2 style="font-size:24px;">Sign in</h2>
+      <form id="loginForm">
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" required autocomplete="username">
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" required autocomplete="current-password">
+        </div>
+        <p id="loginError" style="color:var(--pepper); font-size:13px; display:none;"></p>
+        <button type="submit" class="btn btn-primary btn-block" id="loginBtn">Sign in</button>
+      </form>
+    </div>
+    <p style="text-align:center; margin-top:16px;"><a href="../index.html" style="color:var(--taupe); font-size:13px;">← Back to site</a></p>
+  </div>
+</section>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/admin-auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — BoomTown Admin</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .admin-shell{ display:grid; grid-template-columns:220px 1fr; min-height:100vh; }
+  .admin-side{ background:var(--ink-soft); border-right:1px solid var(--ink-line); padding:24px 18px; display:flex; flex-direction:column; }
+  .admin-side .brand{ margin-bottom:36px; font-size:16px; }
+  .side-link{ display:flex; align-items:center; gap:10px; padding:11px 12px; border-radius:var(--radius); font-size:14px; color:var(--cream-dim); margin-bottom:4px; }
+  .side-link.active,.side-link:hover{ background:var(--ink); color:var(--amber); }
+  .admin-main{ padding:36px 40px; }
+  .admin-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:30px; flex-wrap:wrap; gap:14px; }
+  .view{ display:none; }
+  .view.active{ display:block; }
+  table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  th{ text-align:left; font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--taupe); padding:10px 12px; border-bottom:1px solid var(--ink-line); }
+  td{ padding:12px; border-bottom:1px solid var(--ink-line); vertical-align:middle; }
+  .row-thumb{ width:44px; height:44px; border-radius:4px; background:var(--ink) center/cover no-repeat; flex-shrink:0; }
+  .item-name-cell{ display:flex; align-items:center; gap:12px; }
+  .badge{ font-family:var(--mono); font-size:11px; padding:4px 9px; border-radius:100px; text-transform:uppercase; }
+  .badge.avail{ background:rgba(70,84,63,.35); color:#9CB893; }
+  .badge.hidden{ background:rgba(196,64,28,.2); color:var(--pepper); }
+  .badge.pending{ background:rgba(226,162,39,.18); color:var(--amber); }
+  .badge.preparing{ background:rgba(226,162,39,.28); color:var(--amber); }
+  .badge.ready{ background:rgba(70,84,63,.35); color:#9CB893; }
+  .badge.completed{ background:rgba(255,255,255,.08); color:var(--cream-dim); }
+  .row-actions{ display:flex; gap:10px; }
+  .row-actions button{ background:none; border:none; color:var(--taupe); font-size:12px; text-decoration:underline; }
+  .row-actions button:hover{ color:var(--amber); }
+  .status-select{ background:var(--ink); border:1px solid var(--ink-line); color:var(--cream); padding:6px 8px; border-radius:4px; font-size:12px; font-family:var(--mono); }
+
+  .modal-overlay{ position:fixed; inset:0; background:rgba(10,8,6,.7); display:none; align-items:center; justify-content:center; z-index:100; padding:20px; }
+  .modal-overlay.open{ display:flex; }
+  .modal{ background:var(--ink-soft); border:1px solid var(--ink-line); border-radius:var(--radius); padding:30px; width:100%; max-width:480px; max-height:90vh; overflow-y:auto; }
+  .modal h3{ margin-bottom:20px; }
+  .img-preview{ width:100%; aspect-ratio:16/9; background:var(--ink) center/cover no-repeat; border-radius:4px; border:1px dashed var(--ink-line); display:flex; align-items:center; justify-content:center; color:var(--taupe); font-size:12px; margin-bottom:14px; overflow:hidden; }
+  .modal-actions{ display:flex; gap:12px; margin-top:20px; }
+  .stat-cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:16px; margin-bottom:32px; }
+  .stat-card{ background:var(--ink-soft); border:1px solid var(--ink-line); border-radius:var(--radius); padding:18px; }
+  .stat-card b{ display:block; font-family:var(--display); font-size:26px; color:var(--amber); }
+  .stat-card span{ font-size:11px; color:var(--taupe); font-family:var(--mono); text-transform:uppercase; }
+  @media (max-width:800px){ .admin-shell{ grid-template-columns:1fr; } .admin-side{ display:flex; flex-direction:row; overflow-x:auto; border-right:none; border-bottom:1px solid var(--ink-line); } .admin-main{ padding:24px 18px; } }
+</style>
+</head>
+<body>
+
+<div id="authGate" class="center-page"><p style="color:var(--taupe)">Checking access…</p></div>
+
+<div class="admin-shell" id="adminShell" style="display:none">
+  <aside class="admin-side">
+    <a href="../index.html" class="brand"><span class="mark">BT</span><span>BOOMTOWN<small>ADMIN</small></span></a>
+    <a class="side-link active" data-view="menuView">Menu items</a>
+    <a class="side-link" data-view="ordersView">Orders</a>
+    <a href="../index.html" class="side-link">View live site ↗</a>
+    <div style="flex:1"></div>
+    <button class="side-link" id="signOutBtn" style="width:100%; text-align:left; background:none; border:1px solid var(--ink-line);">Sign out</button>
+  </aside>
+
+  <main class="admin-main">
+
+    <section class="view active" id="menuView">
+      <div class="admin-head">
+        <div>
+          <div class="eyebrow">Menu management</div>
+          <h2 style="font-size:26px;">Menu items</h2>
+        </div>
+        <button class="btn btn-primary" id="addItemBtn">+ Add menu item</button>
+      </div>
+      <div class="stat-cards" id="menuStats"></div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Item</th><th>Category</th><th>Price</th><th>Status</th><th></th></tr></thead>
+          <tbody id="menuTableBody"><tr><td colspan="5">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="view" id="ordersView">
+      <div class="admin-head">
+        <div>
+          <div class="eyebrow">Orders</div>
+          <h2 style="font-size:26px;">Incoming orders</h2>
+        </div>
+      </div>
+      <div class="stat-cards" id="orderStats"></div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Ref</th><th>Customer</th><th>Fulfillment</th><th>Total</th><th>Status</th><th>Placed</th></tr></thead>
+          <tbody id="ordersTableBody"><tr><td colspan="6">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Add/Edit item modal -->
+<div class="modal-overlay" id="itemModalOverlay">
+  <div class="modal">
+    <h3 id="modalTitle">Add menu item</h3>
+    <form id="itemForm">
+      <input type="hidden" id="itemId">
+      <div class="img-preview" id="imgPreview">No image selected</div>
+      <div class="field">
+        <label for="itemImage">Photo</label>
+        <input type="file" id="itemImage" accept="image/*">
+      </div>
+      <div class="field">
+        <label for="itemName">Name</label>
+        <input type="text" id="itemName" required placeholder="e.g. Grilled Peppered Snapper">
+      </div>
+      <div class="field">
+        <label for="itemDesc">Description</label>
+        <textarea id="itemDesc" rows="2" placeholder="Short, appetizing description"></textarea>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="itemPrice">Price (₦)</label>
+          <input type="number" id="itemPrice" required min="0" step="50">
+        </div>
+        <div class="field">
+          <label for="itemCategory">Category</label>
+          <input type="text" id="itemCategory" required placeholder="e.g. Grills, Seafood, Coffee">
+        </div>
+      </div>
+      <div class="field">
+        <label for="itemAvailable">Availability</label>
+        <select id="itemAvailable">
+          <option value="true">Available on menu</option>
+          <option value="false">Hidden (out of stock)</option>
+        </select>
+      </div>
+      <p id="itemFormError" style="color:var(--pepper); font-size:13px; display:none;"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="cancelItemBtn">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="saveItemBtn">Save item</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/admin-auth.js"></script>
+<script src="../js/admin-dashboard.js"></script>
+</body>
+</html>

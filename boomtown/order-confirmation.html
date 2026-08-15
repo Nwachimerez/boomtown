@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order confirmed — BoomTown Restaurant &amp; Coffee Shop PHC</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <span class="mark">BT</span>
+      <span>BOOMTOWN<small>RESTAURANT &amp; COFFEE SHOP · PHC</small></span>
+    </a>
+    <div class="nav-actions">
+      <a href="menu.html" class="btn btn-ghost">Order again</a>
+    </div>
+  </div>
+</nav>
+
+<section class="center-page">
+  <div style="max-width:480px; text-align:center;">
+    <div class="eyebrow" style="justify-content:center;">Order placed</div>
+    <h1 style="font-size:44px;">TICKET'S<br><span style="color:var(--amber)">IN</span></h1>
+    <p id="confirmMsg">Your order has been sent to the kitchen. We'll text you when it's ready.</p>
+    <div class="info-panel" style="text-align:left; margin-top:20px;">
+      <div class="info-row"><span class="k">Reference</span><span id="refOut">—</span></div>
+      <div class="info-row"><span class="k">Order ID</span><span id="orderIdOut">—</span></div>
+    </div>
+    <a href="index.html" class="btn btn-primary" style="margin-top:24px;">Back to home</a>
+  </div>
+</section>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  document.getElementById("refOut").textContent = params.get("ref") || "—";
+  document.getElementById("orderIdOut").textContent = params.get("order") || "—";
+</script>
+</body>
+</html>

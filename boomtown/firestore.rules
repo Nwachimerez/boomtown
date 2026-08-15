@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // Menu items: anyone can read available items, only admins can write
+    match /menuItems/{itemId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Orders: anyone can create an order (checkout is public),
+    // but only admins can read the order list or change status.
+    match /orders/{orderId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Admins allowlist: only readable by the admin user checking their own doc
+    match /admins/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false; // manage from the Firebase console only
+    }
+  }
+}
