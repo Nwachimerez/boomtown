@@ -1,4 +1,4 @@
-const DELIVERY_FEE = 1500;
+const DELIVERY_FEE = (window.RESTAURANT_CONFIG && RESTAURANT_CONFIG.deliveryFee) || 1500;
 let FULFILLMENT = "pickup";
 
 function renderCheckoutSummary(){

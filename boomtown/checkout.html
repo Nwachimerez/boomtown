@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Checkout — BoomTown Restaurant &amp; Coffee Shop PHC</title>
+<title data-cfg-title="Checkout — ">Checkout</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,8 +11,8 @@
 <nav class="site-nav">
   <div class="wrap">
     <a href="index.html" class="brand">
-      <span class="mark">BT</span>
-      <span>BOOMTOWN<small>RESTAURANT &amp; COFFEE SHOP · PHC</small></span>
+      <span class="mark" data-cfg="initials">BT</span>
+      <span data-cfg="shortName">Restaurant</span>
     </a>
     <div class="nav-links">
       <a href="index.html">Home</a>
@@ -33,7 +33,7 @@
 
       <form id="checkoutForm">
         <div class="toggle-row">
-          <button type="button" class="toggle-opt active" data-fulfillment="pickup">Pickup at BoomTown</button>
+          <button type="button" class="toggle-opt active" data-fulfillment="pickup">Pickup</button>
           <button type="button" class="toggle-opt" data-fulfillment="delivery">Delivery</button>
         </div>
 
@@ -55,7 +55,7 @@
 
         <div class="field" id="addressField" style="display:none">
           <label for="address">Delivery address</label>
-          <textarea id="address" rows="3" placeholder="Street, area, landmark — Port Harcourt"></textarea>
+          <textarea id="address" rows="3" placeholder="Street, area, landmark"></textarea>
         </div>
 
         <div class="field">
@@ -80,6 +80,8 @@
 
 <div class="toast" id="toast"></div>
 
+<script src="js/restaurant-config.js"></script>
+<script src="js/apply-config.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>

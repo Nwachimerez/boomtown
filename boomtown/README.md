@@ -1,6 +1,17 @@
-# BoomTown Restaurant & Coffee Shop PHC — Online Ordering Site
+# Restaurant Online Ordering Template
 
-Vanilla JS + Firebase (CDN SDK) + Paystack, deployable to Netlify — same stack as your other projects.
+Vanilla JS + Firebase (CDN SDK) + Paystack, deployable to Netlify — same stack as your other projects. Originally built for BoomTown Restaurant & Coffee Shop PHC, now structured as a reusable template.
+
+## 🍽️ Cloning this for a new restaurant client
+
+**This is the whole process — everything else in this README is one-time technical setup.**
+
+1. Duplicate this whole folder for the new client.
+2. Open `js/restaurant-config.js` — that's the ONLY file with business content (name, tagline, phone, address, hours, hero copy, about text, ticker messages, brand colors, delivery fee). Edit every field to match the new restaurant. Nothing else in any `.html` file needs to change — every page reads from this file automatically.
+3. Set up a fresh Firebase project, Cloudinary account, and Paystack account for the new client (steps below) — each client needs their own, since orders/menu data shouldn't mix between restaurants.
+4. Deploy to a new Netlify site.
+
+That's it — same template, new brand, ~30–45 minutes once you've done it twice.
 
 ## What's included
 - `index.html` — homepage (hero, featured dishes pulled live from Firestore, hours/location)

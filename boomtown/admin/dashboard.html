@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard — BoomTown Admin</title>
+<title data-cfg-title="Dashboard — Admin — ">Dashboard</title>
 <link rel="stylesheet" href="../css/style.css">
 <style>
   .admin-shell{ display:grid; grid-template-columns:220px 1fr; min-height:100vh; }
@@ -51,7 +51,7 @@
 
 <div class="admin-shell" id="adminShell" style="display:none">
   <aside class="admin-side">
-    <a href="../index.html" class="brand"><span class="mark">BT</span><span>BOOMTOWN<small>ADMIN</small></span></a>
+    <a href="../index.html" class="brand"><span class="mark" data-cfg="initials">BT</span><span data-cfg="shortName">Restaurant</span></a>
     <a class="side-link active" data-view="menuView">Menu items</a>
     <a class="side-link" data-view="ordersView">Orders</a>
     <a href="../index.html" class="side-link">View live site ↗</a>
@@ -144,6 +144,8 @@
 
 <div class="toast" id="toast"></div>
 
+<script src="../js/restaurant-config.js"></script>
+<script src="../js/apply-config.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>

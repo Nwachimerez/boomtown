@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Staff login — BoomTown Admin</title>
+<title data-cfg-title="Staff login — ">Staff login</title>
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -11,8 +11,8 @@
 <section class="center-page">
   <div style="width:100%; max-width:380px;">
     <a href="../index.html" class="brand" style="justify-content:center; margin-bottom:30px;">
-      <span class="mark">BT</span>
-      <span>BOOMTOWN<small>ADMIN</small></span>
+      <span class="mark" data-cfg="initials">BT</span>
+      <span data-cfg="shortName">Restaurant</span>
     </a>
 
     <div class="info-panel">
@@ -35,6 +35,8 @@
   </div>
 </section>
 
+<script src="../js/restaurant-config.js"></script>
+<script src="../js/apply-config.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>

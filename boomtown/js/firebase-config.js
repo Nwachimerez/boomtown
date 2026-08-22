@@ -32,11 +32,6 @@ const PAYSTACK_PUBLIC_KEY = "pk_test_3f2beda2aa423810a34793e2c56b17917f7e17ab";
 // 3. Put that preset name into CLOUDINARY_UPLOAD_PRESET below.
 const CLOUDINARY_CLOUD_NAME = "wmsrjers";
 const CLOUDINARY_UPLOAD_PRESET = "boomtown-menu";
-const RESTAURANT = {
-  name: "BoomTown Restaurant & Coffee Shop PHC",
-  phone: "0809 400 0060",
-  whatsapp: "2348094000060",
-  address: "Phase 1, 15c Omerelu Street, New GRA, Port Harcourt 500272, Rivers",
-  hours: "Open daily · Closes 12 midnight"
-};
 
+// Brand/business info (name, colors, copy, contact, hours) lives in
+// js/restaurant-config.js — that's the file to edit for a new client.

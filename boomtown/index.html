@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BoomTown Restaurant &amp; Coffee Shop PHC — Port Harcourt</title>
-<meta name="description" content="BoomTown Restaurant & Coffee Shop, New GRA, Port Harcourt. Order online for pickup or delivery — grills, seafood, small chops and coffee.">
+<title data-cfg-title="">Restaurant</title>
+<meta name="description" content="Order online for pickup or delivery.">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,8 +12,8 @@
 <nav class="site-nav">
   <div class="wrap">
     <a href="index.html" class="brand">
-      <span class="mark">BT</span>
-      <span>BOOMTOWN<small>RESTAURANT &amp; COFFEE SHOP · PHC</small></span>
+      <span class="mark" data-cfg="initials">BT</span>
+      <span data-cfg="shortName">Restaurant</span>
     </a>
     <div class="nav-links">
       <a href="index.html" class="active">Home</a>
@@ -33,33 +33,20 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow">New GRA · Port Harcourt · Open till midnight</div>
-      <h1>BOOM<br>TOWN<span class="line2"> ROOFTOP</span></h1>
-      <p class="hero-lede">Grills off the coal, seafood off the coast, and a coffee bar that doesn't sleep till midnight. Pull up to the patio, or order in — this is Port Harcourt's after-work address.</p>
+      <div class="eyebrow" data-cfg="heroEyebrow"></div>
+      <h1><span data-cfg="heroLine1"></span><br><span data-cfg="heroLine2"></span><span class="line2" data-cfg="heroLine3"></span></h1>
+      <p class="hero-lede" data-cfg="heroLede"></p>
       <div class="hero-cta-row">
         <a href="menu.html" class="btn btn-primary">See the menu</a>
-        <a href="tel:08094000060" class="btn btn-ghost">Call to reserve</a>
+        <a href="#" class="btn btn-ghost" data-cfg-href="phoneHref">Call to reserve</a>
       </div>
     </div>
-    <div class="hero-stats">
-      <div class="hero-stat"><b>4.3 / 5</b><span>FROM 575 GUEST REVIEWS</span></div>
-      <div class="hero-stat"><b>₦10K–70K</b><span>TYPICAL SPEND PER TABLE</span></div>
-      <div class="hero-stat"><b>12:00 AM</b><span>KITCHEN CLOSES NIGHTLY</span></div>
-    </div>
+    <div class="hero-stats" data-cfg-list="stats"></div>
   </div>
 </header>
 
 <div class="ticker">
-  <div class="ticker-track">
-    <span>★ Locals say the fisherman soup is big enough to share</span>
-    <span>★ Order online for pickup or delivery across Port Harcourt</span>
-    <span>★ Live coffee bar open through the afternoon</span>
-    <span>★ Wheelchair accessible entrance</span>
-    <span>★ Locals say the fisherman soup is big enough to share</span>
-    <span>★ Order online for pickup or delivery across Port Harcourt</span>
-    <span>★ Live coffee bar open through the afternoon</span>
-    <span>★ Wheelchair accessible entrance</span>
-  </div>
+  <div class="ticker-track" data-cfg-list="ticker"></div>
 </div>
 
 <section class="section">
@@ -81,9 +68,9 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="eyebrow">The room</div>
-        <h2>An open-air kitchen built for GRA nights</h2>
-        <p style="max-width:560px">String lights over wicker seating, a wood-fired grill station, and a bar stocked for both coffee mornings and long dinners. BoomTown was built as the spot you bring people you want to impress — without the stiffness.</p>
+        <div class="eyebrow" data-cfg="aboutEyebrow"></div>
+        <h2 data-cfg="aboutHeading"></h2>
+        <p style="max-width:560px" data-cfg="aboutCopy"></p>
       </div>
     </div>
   </div>
@@ -94,14 +81,14 @@
     <div class="section-head">
       <div>
         <div class="eyebrow">Visit</div>
-        <h2>Find us in New GRA</h2>
+        <h2>Find us</h2>
       </div>
     </div>
     <div class="info-panel" style="max-width:560px">
-      <div class="info-row"><span class="k">Status</span><span><span class="status-dot"></span>Open now · closes 12:00 am</span></div>
-      <div class="info-row"><span class="k">Address</span><span>Phase 1, 15c Omerelu Street, New GRA, Port Harcourt 500272, Rivers</span></div>
-      <div class="info-row"><span class="k">Phone</span><span><a href="tel:08094000060" class="btn-line" style="display:inline">0809 400 0060</a></span></div>
-      <div class="info-row"><span class="k">WhatsApp</span><span><a href="https://wa.me/2348094000060" class="btn-line" style="display:inline">Message us</a></span></div>
+      <div class="info-row"><span class="k">Status</span><span><span class="status-dot"></span><span data-cfg="hoursShort"></span></span></div>
+      <div class="info-row"><span class="k">Address</span><span data-cfg="address"></span></div>
+      <div class="info-row"><span class="k">Phone</span><span><a href="#" class="btn-line" style="display:inline" data-cfg="phone" data-cfg-href="phoneHref"></a></span></div>
+      <div class="info-row"><span class="k">WhatsApp</span><span><a href="#" class="btn-line" style="display:inline" data-cfg-whatsapp>Message us</a></span></div>
     </div>
   </div>
 </section>
@@ -110,8 +97,8 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-col">
-        <h5>BoomTown</h5>
-        <p style="max-width:220px">Restaurant &amp; Coffee Shop, New GRA, Port Harcourt.</p>
+        <h5 data-cfg="shortName">Restaurant</h5>
+        <p style="max-width:220px" data-cfg="footerBlurb"></p>
       </div>
       <div class="foot-col">
         <h5>Order</h5>
@@ -120,16 +107,16 @@
       </div>
       <div class="foot-col">
         <h5>Contact</h5>
-        <a href="tel:08094000060">0809 400 0060</a>
-        <a href="https://wa.me/2348094000060">WhatsApp</a>
+        <a href="#" data-cfg="phone" data-cfg-href="phoneHref"></a>
+        <a href="#" data-cfg-whatsapp>WhatsApp</a>
       </div>
       <div class="foot-col">
         <h5>Hours</h5>
-        <p>Daily, until 12:00 am</p>
+        <p data-cfg="hoursLong"></p>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 BoomTown Restaurant &amp; Coffee Shop PHC</span>
+      <span>© <span data-cfg-year></span> <span data-cfg="name"></span></span>
       <a href="admin/login.html" style="color:var(--taupe)">Staff login</a>
     </div>
   </div>
@@ -141,7 +128,7 @@
     <button class="close-cart" id="closeCart">×</button>
     <div class="t-eyebrow">Order ticket</div>
     <h3>Your table</h3>
-    <div class="ticket-meta">BoomTown · Pickup or delivery</div>
+    <div class="ticket-meta"><span data-cfg="shortName"></span> · Pickup or delivery</div>
   </div>
   <div class="ticket-items" id="ticketItems"></div>
   <div class="ticket-foot">
@@ -152,6 +139,8 @@
 </aside>
 <div class="toast" id="toast"></div>
 
+<script src="js/restaurant-config.js"></script>
+<script src="js/apply-config.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>

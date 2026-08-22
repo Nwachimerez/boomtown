@@ -47,7 +47,8 @@ const Cart = {
   },
 
   formatNaira(n){
-    return "₦" + Number(n).toLocaleString("en-NG");
+    const symbol = (window.RESTAURANT_CONFIG && RESTAURANT_CONFIG.currencySymbol) || "₦";
+    return symbol + Number(n).toLocaleString("en-NG");
   }
 };
 

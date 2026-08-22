@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Order confirmed — BoomTown Restaurant &amp; Coffee Shop PHC</title>
+<title data-cfg-title="Order confirmed — ">Order confirmed</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -11,8 +11,8 @@
 <nav class="site-nav">
   <div class="wrap">
     <a href="index.html" class="brand">
-      <span class="mark">BT</span>
-      <span>BOOMTOWN<small>RESTAURANT &amp; COFFEE SHOP · PHC</small></span>
+      <span class="mark" data-cfg="initials">BT</span>
+      <span data-cfg="shortName">Restaurant</span>
     </a>
     <div class="nav-actions">
       <a href="menu.html" class="btn btn-ghost">Order again</a>
@@ -33,6 +33,8 @@
   </div>
 </section>
 
+<script src="js/restaurant-config.js"></script>
+<script src="js/apply-config.js"></script>
 <script>
   const params = new URLSearchParams(window.location.search);
   document.getElementById("refOut").textContent = params.get("ref") || "—";
